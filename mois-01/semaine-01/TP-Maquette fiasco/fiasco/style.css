@@ -1,0 +1,32 @@
+@layer reset, base, modules;
+@import "../ResetCSS.css" layer(reset);
+@import "./base/typography.css" layer(base);
+@import "./base/colors.css" layer(base);
+@import "./modules/header.css" layer(modules);
+@import "./modules/hero.css" layer(modules);
+@import "./modules/btn.css" layer(modules);
+@import "./modules/section.css" layer(modules);
+@import "./modules/menu.css" layer(modules);
+@import "./modules/blog.css" layer(modules);
+@import "./modules/chef.css" layer(modules);
+@import "./modules/reservation.css" layer(modules);
+@import "./modules/recipes.css" layer(modules);
+@import "./modules/footer.css" layer(modules);
+
+:root {
+  --font-alt: "Pinyon Script", serif;
+  --padding: 1rem;
+  --accent: #c89446;
+  --accent-dark: #a0752c;
+  --title: #383838;
+  --text: #6f6f6f;
+  --border: #6f6f6f;
+  --border-light: #f2f2f2;
+  --text-light: #fff;
+  --footer: #383838;
+}
+
+body {
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--text);
+}

@@ -1,0 +1,55 @@
+.section-blog {
+    max-width: 920px;
+    margin-inline: auto;
+    text-align: center;
+    margin-block: 6rem;
+    padding-inline: var(--padding);
+
+    .text-script {
+        align-items: center;
+    }
+
+    & > p {
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+        line-height: 1.625;
+    }
+}
+
+.posts {
+    display: grid;
+    gap: 2rem;
+}
+
+.post {
+    text-align: left;
+    gap: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+
+    img {
+        border-radius: 4px;
+        width: 125px;
+        height: 125px;
+    }
+
+    p {
+        line-height: 1.6;
+        padding-bottom: 1rem;
+    }
+}
+
+.post__title {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: var(--title);
+    padding-bottom: .5rem;
+}
+
+@media (min-width: 800px) {
+    .posts {
+        grid-template-columns: 1fr 1fr;
+        gap:4.5rem 2rem;
+    }
+}

@@ -1,0 +1,36 @@
+.btn-ghost {
+    display: flex;
+    align-items: center;
+    color: var(--accent);
+    gap: .2rem;
+
+    svg {
+        transform: translateY(1px);
+        width: 1rem;
+        height: 1rem;
+        transition: .3s;
+    }
+
+    &:hover {
+        color: var(--text);
+
+        svg {
+            transform: translate(2px, 1px);
+        }
+    }
+}
+
+
+.btn-fill {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-light);
+    background-color: var(--accent);
+    text-transform: uppercase;
+    padding:0.75rem 4.25rem;
+    transition: .3s;
+
+    &:hover {
+        background-color: var(--accent-dark);
+    }
+}

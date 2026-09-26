@@ -1,0 +1,124 @@
+.section-text-img:first-child {
+  margin-top: -20px;
+}
+
+.section-text-img {
+  display: grid;
+  gap: 2rem;
+  padding-inline: var(--padding);
+  max-width: 920px;
+  margin-inline: auto;
+  margin-bottom: 4.375rem;
+
+  h2 {
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    line-height: 1.625;
+  }
+}
+
+.section-text-img__img {
+  position: relative;
+  max-width: 350px;
+  z-index: 2;
+  margin-bottom: 30px;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+
+  img {
+    transform: translate(30px, 30px);
+    border-radius: 2px;
+  }
+}
+
+.section-text-img__list {
+  border: 1px solid var(--accent);
+  padding: 2rem;
+  z-index: 2;
+  display: grid;
+  gap: 1rem;
+
+  li {
+    display: flex;
+    font-weight: 600;
+    color: var(--title);
+  }
+
+  span {
+    color: var(--text);
+    width: 80px;
+    font-weight: 300;
+  }
+}
+
+.section-text-img__video {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0px 0px 30px rgba(127, 127, 127, 0.5);
+
+  img {
+    transform: none !important;
+  }
+
+  &::before {
+    transition: 0.3s;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(28, 28, 28, 0.4);
+  }
+
+  &:hover::before {
+    opacity: 0.5;
+  }
+
+  svg {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    z-index: 2;
+    top: calc(50% - 2rem);
+    left: calc(50% - 2rem);
+    border-radius: 100%;
+    border: 1rem solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (min-width: 600px) {
+  .section-text-img__list {
+    box-sizing: border-box;
+    width: 350px;
+    flex: none;
+    padding: 2.6rem;
+    min-height: 425px;
+  }
+
+  .section-text-img__video {
+    width: 50%;
+    flex: none;
+  }
+
+  .section-text-img {
+    display: flex;
+    gap: 90px;
+    align-items: center;
+  }
+
+  .section-text-img:nth-child(even) {
+    flex-direction: row-reverse;
+
+    img {
+      transform: translate(-30px, 30px);
+    }
+  }
+
+  .section-text-img__img {
+    width: min(39%, 350px);
+    flex: none;
+  }
+}

@@ -1,0 +1,110 @@
+.section-menu {
+    max-width: 1140px;
+    margin-inline: auto;
+    text-align: center;
+    padding-inline: var(--padding);
+
+    .text-script {
+        align-items: center;
+    }
+
+    & > p {
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+        line-height: 1.625;
+    }
+}
+
+.menu-navigation {
+    display: flex;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--title);
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin-bottom: 2.65rem;
+
+    a {
+        transition: .3s;
+        border-bottom: 1px solid transparent;
+    }
+
+    a.active {
+        border-color: var(--accent);
+    }
+
+    a:hover {
+        color: var(--accent);
+    }
+}
+
+.menu-items {
+    display: grid;
+    gap: 2rem;
+}
+
+.menu-item {
+    text-align: left;
+    gap: 1.5rem;
+    display: flex;
+    align-items: center;
+
+    img {
+        border-radius: 2px;
+    }
+
+    p {
+        font-size: 0.875rem;
+        line-height: 1.6;
+        padding-bottom: 1rem;
+    }
+}
+
+.menu-item__title {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: var(--title);
+    padding-bottom: .5rem;
+}
+
+.menu-item__price {
+    font-family: var(--font-alt), serif;
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+@media (min-width: 800px) {
+    .menu-items {
+        grid-template-columns: 1fr 1fr;
+        margin-top: 7.75rem;
+        position: relative;
+        row-gap: 100px;
+    }
+    .menu-item__title,
+    .menu-item p {
+        background-color: #fff;
+    }
+    .menu-items::before {
+        content:'';
+        z-index: -1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 424px;
+        height: 424px;
+        border: 1px solid var(--accent);
+    }
+    .menu-item {
+        max-width: 490px;
+    }
+    .menu-item:nth-child(even) {
+        flex-direction: row-reverse;
+        text-align: right;
+        justify-self: end;
+    }
+    .menu-item__price {
+        font-size: 2.5rem;
+    }
+}

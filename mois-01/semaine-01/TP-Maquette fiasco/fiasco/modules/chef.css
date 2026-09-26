@@ -1,0 +1,40 @@
+.section-chef {
+    margin: 3rem auto 3.75rem auto;
+    max-width: 1100px;
+    padding-inline: var(--padding);
+
+    h2 {
+        margin-bottom: .5rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.7;
+    }
+
+    .btn-ghost {
+        margin-top: 3.5rem;
+    }
+}
+
+.section-chef__img {
+    width: 250px;
+    margin-inline: auto;
+}
+
+@media (min-width: 700px) {
+    .section-chef {
+        padding-right: 390px;
+        position: relative;
+        height: 522px;
+        display: grid;
+        align-content: center;
+        margin-bottom: 0;
+    }
+    .section-chef__img {
+        width: 350px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+}

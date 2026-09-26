@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Fiasco | Styles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="fiasco/style.css">
+    <link rel="stylesheet" href="colors.css">
+    <style>
+        :root {
+            --color-surface: #fff;
+            --color-border: #d9d9d9;
+        }
+        .section {
+            padding-inline: var(--padding);
+            max-width: 1100px;
+            margin: 5rem auto;
+        }
+        .section p {
+            margin: 1rem 0;
+        }
+        .styles-grid {
+            display: grid;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .style-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 2px;
+            background: var(--color-surface);
+            text-align: left;
+        }
+        .style-name {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--title);
+            margin-bottom: 1rem;
+        }
+        .style-render {
+            margin: 0;
+            text-align: left!important;
+        }
+        .style-props {
+            display: grid;
+            margin-top: 1rem;
+            gap: 0.5rem;
+        }
+        .style-prop {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .style-prop strong {
+            color: var(--title);
+        }
+
+        @media (min-width: 800px) {
+            .styles-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="fiasco.html" class="logo">
+        FIASCO
+    </a>
+    <nav class="navigation">
+        <a href="fiasco.html">A propos</a>
+        <a href="fiasco.html">Menu</a>
+        <a href="fiasco-recette.html">Recette</a>
+        <a href="fiasco-styles.html" class="active">Styles</a>
+        <a href="#" class="header-btn">Réserver</a>
+    </nav>
+    <button class="burger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="lucide lucide-menu-icon lucide-menu">
+            <path d="M4 5h16"/>
+            <path d="M4 12h16"/>
+            <path d="M4 19h16"/>
+        </svg>
+    </button>
+</header>
+
+<section class="hero has-overlay">
+    <div class="hero-surtitle">Identité visuelle</div>
+    <h1 class="hero-title">Le Fiasco</h1>
+    <div class="hero-slogan">Palette et styles</div>
+</section>
+
+<main class="page-body has-decoration">
+    <section class="section">
+        <div class="text-script">Couleurs</div>
+        <h2 class="text-title">PALETTE UTILISÉE</h2>
+        <p>
+            Liste des couleurs utilisées dans ce design.
+        </p>
+
+        <h3 class="colors-title">Identité</h3>
+        <div class="colors">
+            <div class="color">
+                <div class="color-preview" style="background: var(--accent)"></div>
+                <div class="color-value">#C89446</div>
+                <div class="color-description">Accent principal</div>
+            </div>
+            <div class="color">
+                <div class="color-preview" style="background: var(--accent-dark)"></div>
+                <div class="color-value">#A0752C</div>
+                <div class="color-description">Accent foncé pour les hover</div>
+            </div>
+            <div class="color">
+                <div class="color-preview" style="background: var(--title)"></div>
+                <div class="color-value">#383838</div>
+                <div class="color-description">Couleur des titres</div>
+            </div>
+            <div class="color">
+                <div class="color-preview" style="background: var(--text)"></div>
+                <div class="color-value">#6F6F6F</div>
+                <div class="color-description">Texte principal</div>
+            </div>
+        </div>
+
+        <h3 class="colors-title">Surfaces et bordures</h3>
+        <div class="colors">
+            <div class="color">
+                <div class="color-preview" style="background: var(--border)"></div>
+                <div class="color-value">#6F6F6F</div>
+                <div class="color-description">Bordures principales</div>
+            </div>
+            <div class="color">
+                <div class="color-preview" style="background: var(--border-light)"></div>
+                <div class="color-value">#F2F2F2</div>
+                <div class="color-description">Séparateurs légers</div>
+            </div>
+        </div>
+
+        <h3 class="colors-title">Contraste</h3>
+        <div class="colors">
+            <div class="color">
+                <div class="color-preview" style="background: var(--text-light)"></div>
+                <div class="color-value">#FFFFFF</div>
+                <div class="color-description">Texte clair sur fonds sombres</div>
+            </div>
+            <div class="color">
+                <div class="color-preview" style="background: linear-gradient(#000, #36363632), linear-gradient(#1C1C1C28, #1C1C1C28)"></div>
+                <div class="color-value">#000000 → #1C1C1C28</div>
+                <div class="color-description">Dégradé de l'effet .has-overlay</div>
+            </div>
+            <div class="color">
+                <div class="color-preview" style="background: var(--footer)"></div>
+                <div class="color-value">#383838</div>
+                <div class="color-description">Fond du footer</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="text-script">Typographie</div>
+        <h2 class="text-title">STYLES DE TEXTE</h2>
+        <p>
+            Inventaire des styles typographiques utilisés dans <code>fiasco.html</code>, avec les propriétés définies
+            dans le CSS.
+        </p>
+
+        <div class="styles-grid">
+            <article class="style-card">
+                <h3 class="style-name">Sur-titre de section</h3>
+                <div class="text-script style-render">Texte d'exemple</div>
+                <div class="style-props">
+                    <div class="style-prop"><strong>font-family:</strong> Pinyon Script </div>
+                    <div class="style-prop"><strong>font-size:</strong> 2.5rem</div>
+                    <div class="style-prop"><strong>color:</strong> #C89446</div>
+                </div>
+            </article>
+
+            <article class="style-card">
+                <h3 class="style-name">Titre de section</h3>
+                <div class="text-title style-render">Texte d'exemple</div>
+                <div class="style-props">
+                    <div class="style-prop"><strong>font-family:</strong> Source Sans 3</div>
+                    <div class="style-prop"><strong>font-size:</strong> 1.75rem</div>
+                    <div class="style-prop"><strong>letter-spacing:</strong> 1px</div>
+                    <div class="style-prop"><strong>color:</strong> #383838</div>
+                    <div class="style-prop"><strong>font-weight:</strong> bold</div>
+                </div>
+            </article>
+
+            <article class="style-card">
+                <h3 class="style-name">Paragraphes</h3>
+                <p class="text-p style-render">Texte d'exemple pour visualiser le rendu du paragraphe dans la page.</p>
+                <div class="style-props">
+                    <div class="style-prop"><strong>font-family:</strong> Source Sans 3</div>
+                    <div class="style-prop"><strong>line-height:</strong> 1.7</div>
+                </div>
+            </article>
+
+            <div class="colors-title" style="grid-column: 1 / -1;">Menu</div>
+
+            <article class="style-card">
+                <h3 class="style-name">Titre de menu</h3>
+                <div class="menu-item__title style-render">Texte d'exemple</div>
+                <div class="style-props">
+                    <div class="style-prop"><strong>font-size:</strong> 1.125rem</div>
+                    <div class="style-prop"><strong>color:</strong> #383838</div>
+                    <div class="style-prop"><strong>font-weight:</strong> bold</div>
+                </div>
+            </article>
+
+            <article class="style-card">
+                <h3 class="style-name">Prix de menu</h3>
+                <div class="menu-item__price style-render">29 €</div>
+                <div class="style-props">
+                    <div class="style-prop"><strong>font-family:</strong> Pinyon Script</div>
+                    <div class="style-prop"><strong>font-size:</strong> 2rem</div>
+                    <div class="style-prop"><strong>color:</strong> #C89446</div>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer__body">
+        <section class="footer__column">
+            <h2 class="footer__title">LE FIASCO</h2>
+            <p>
+                Une table française contemporaine où les produits de saison, les sauces justes et le sens du détail
+                composent une expérience chaleureuse et raffinée.
+            </p>
+        </section>
+
+        <section class="footer__column">
+            <h2 class="footer__title">INFORMATIONS</h2>
+            <address>
+                <p>12 rue des Grands Augustins, 75006 Paris</p>
+                <p><a href="tel:+33142876543">+33 1 42 87 65 43</a></p>
+                <p><a href="mailto:reservation@lefiasco.fr">reservation@lefiasco.fr</a></p>
+            </address>
+        </section>
+
+        <section class="footer__column">
+            <h2 class="footer__title">HORAIRES</h2>
+            <p>Lundi au vendredi | 12:00 - 14:30 & 19:00 - 23:00</p>
+        </section>
+
+        <p class="footer__copyright"><strong>2018 LE FIASCO.</strong> Tous droits réservés.</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

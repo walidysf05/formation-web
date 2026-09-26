@@ -1,0 +1,52 @@
+.section-recipes__body {
+    padding:5rem  var(--padding);
+    max-width: 900px;
+    margin-inline: auto;
+
+    p {
+        max-width: 720px;
+    }
+
+    .text-title {
+        margin-bottom: 8px;
+    }
+
+}
+
+.recipe-list {
+    margin-block: 1.5rem;
+}
+
+.recipe-item {
+    display: flex;
+    gap: 1.5rem;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 1.125rem;
+    font-weight: 300;
+    align-items: center;
+
+    &:last-child {
+        border: none;
+    }
+}
+
+.recipe-item__date {
+    display: flex;
+    flex-direction: column;
+
+    strong {
+        color: var(--title);
+        font-size: 1.75rem;
+        font-weight: bold;
+    }
+}
+
+@media (min-width: 900px) {
+    .section-recipes {
+        background: url(../img/pepper.png) top -20px left no-repeat;
+    }
+    .recipe-list {
+        margin-block: 3rem;
+    }
+}

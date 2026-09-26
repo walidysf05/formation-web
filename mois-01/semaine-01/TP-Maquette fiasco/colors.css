@@ -1,0 +1,39 @@
+.colors-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 2rem 0 1rem;
+}
+
+.colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.color {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--color-border, #d9d9d9);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.color-preview {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.color-value {
+  font-weight: bold;
+  color: var(--title);
+}
+
+.color-description {
+  font-size: 0.875rem;
+  color: var(--text);
+}
