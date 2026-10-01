@@ -16,7 +16,6 @@ body{
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 0px 11px #0000001c ;
-
 }
 
 .logo{
@@ -25,7 +24,6 @@ body{
     line-height: 1.33;
     font-family: serif;
     color:#23422a;
-
 }
 
 .logo:hover{
@@ -40,7 +38,6 @@ body{
     gap: 1rem;
     align-items: flex-end;
     color: #566342;
-
 }
 
 .navigation a{
@@ -74,21 +71,12 @@ body{
     color: #566342;
 }
 
-
-
-
-
-
-
-
 .hero{
     display: flex;
     align-items: center;
     height: 600px;
     background: url(https://picsum.photos/id/1040/800/600)
     center center / cover;
-
-
 }   
 
 .hero .container{
@@ -106,7 +94,6 @@ body{
 .hero-date{
     font-size: 0.75rem;
     letter-spacing: 3px;
-
 }
 
 .hero-title{
@@ -116,14 +103,12 @@ body{
     font-family: serif;
     color:#23422a;
     line-height: 1;
-
 }
 
 .hero-description{
     line-height: 1.6;
     text-wrap: balance;
     margin-bottom: 2rem;
-
 }
 
 .btn{
@@ -138,7 +123,6 @@ body{
 .btn-green{
     background: #23422a;
     color: #FFF;
- 
 }
 
 .btn-white{
@@ -154,8 +138,6 @@ body{
     background: #ffffffd1;
 }
 
-
-
 .section{
     padding-block: 6rem;
 }
@@ -169,19 +151,16 @@ body{
     font-family: serif;
     margin-bottom: 1rem;
     color: #23422a;
-
 }
 
 .section-description{
     line-height: 1.5;
     max-width: 700px;
     margin-bottom: 3rem;
-     
 }
 
 .section-body .section-description{
     margin-bottom: 0;
-
 }
 
 .section-link{
@@ -200,26 +179,19 @@ body{
     flex-direction: column;
     gap: 1.5rem;
     margin-bottom: 3rem;
-
 }
-
-
 
 .etudes-grid{
     display: grid;
     gap: 1.5rem;
-
-
 }
 
 .etude{
     position: relative;
-
 }
 
 .etude-big img{
     height: 400px;
-
 }
 
 .etude img{
@@ -233,7 +205,6 @@ body{
     bottom: 1.5rem;
     background: #ebe8de;
     padding: 1rem;
-
 }
 
 .etude-title{
@@ -242,7 +213,6 @@ body{
     line-height: 1.4;
     margin-bottom: 0.25rem;
     color: #23422a;
-    
 }
 
 .etude-description{
@@ -251,7 +221,6 @@ body{
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #566342;
-
 }
 
 .products{
@@ -263,14 +232,12 @@ body{
     margin-bottom: 1rem;
 }
 
-
 .product-title{
     font-size: 1.13rem;
     font-family: serif;
     line-height: 1.56;
     margin-bottom: 0.25rem;
      color: #23422a;
-
 }
 
 .product-category{
@@ -278,15 +245,12 @@ body{
     letter-spacing: 1px;
     line-height: 1.33;
     color: #566342;
-
-
 }
 
 .product-info{
     align-items: baseline;
     display: flex;
     justify-content: space-between;
-
 }
 
 .product-price{
@@ -295,12 +259,10 @@ body{
     line-height: 1.43;
 }
 
-
 .blockquote{
     background: #dddad0;
     padding-block: 4rem;
     text-align: center;
-
 }
 
 .blockquote .container{
@@ -335,7 +297,6 @@ body{
     letter-spacing: 1px;
     text-transform: uppercase;
     gap: 1rem;
-
 }
 
 .blockquote-info hr{
@@ -353,7 +314,6 @@ body{
     font-size: 1.88rem;
     line-height: 1.25;
     font-family: serif;
-
 }
 
 .blockquote-body p{
@@ -370,15 +330,11 @@ body{
     line-height: 1.2;
     text-transform: uppercase;
     padding: 0.75rem 2rem;
-    
 }
 
 .blockquote-btn:hover{
     background: #23422a;
 }
-
-
-
 
 .newsletter{
     background:#23422a;
@@ -391,7 +347,6 @@ body{
 
 .newsletter .section-title{
     color: #FFF;
-
 }
 
 .newsletter .section-description{
@@ -411,7 +366,6 @@ body{
     background: #ffffff10;
     color: #acd0af;
     border: none;
-
 }
 
 .newsletter-form input:focus{
@@ -421,10 +375,6 @@ body{
 .newsletter-form input::placeholder{
     color:#acd0afb0 ;
 }
-
-
-
-
 
 .footer{
     padding: 3rem 1.5rem;
@@ -439,8 +389,7 @@ body{
 .footer-logo{
     font-size: 1.25rem;
     font-family: serif;
-    margin-bottom: 1.25rem;
-   
+    margin-bottom: 1.25rem;   
 }
 
 .footer-description{
@@ -454,7 +403,6 @@ body{
     justify-content: center;
     gap: 1rem;
     margin-bottom: 1rem;
-   
 }
 
 .footer-social a{
@@ -462,7 +410,6 @@ body{
     height: 24px;
     display: block;
     color: #23422a;
-   
 }
 
 .footer-links{
@@ -484,8 +431,6 @@ body{
     display: block;
     padding-block: 0.25rem;
     color: #566342;
-    
-
 }
 
 .footer-navigation a:first-child{
