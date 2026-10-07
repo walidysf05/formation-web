@@ -11,6 +11,8 @@
         const oper = prompt('Choose an operation (+, -, *, /, %)');
         const y = Number(prompt('Enter second number'));
         
+        if (Number.isNaN(x) || Number.isNaN(y)) {
+            console.log('Invalid number');
         } else if (oper === '+') {
             console.log(`${x} + ${y} = ${x + y}`);
         } else if (oper === '-') {
