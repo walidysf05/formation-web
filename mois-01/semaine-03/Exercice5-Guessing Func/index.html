@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Function</title>
+    <script>
+          
+          const result = Math.floor(Math.random()*11);
+          function isRight (n) {
+            return result === n;
+          }
+          function guess () {
+            const number = Number(prompt('Enter a number'));
+            return isRight(number);
+          }
+          for(i = 0 ; i < 3 ; i++) {
+            if (guess()) {
+                console.log('You have the instinct');
+                break;
+            }else if (i === 2 ) {
+                console.log('You have lost , Try next time')
+            }
+          }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

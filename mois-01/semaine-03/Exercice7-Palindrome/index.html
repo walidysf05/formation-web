@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>isPalindrome</title>
+    <script>
+      function isPalindrome(word) {
+        word = word.toUpperCase();
+        let reversed = word.split("").reverse().join("");
+        return word === reversed;
+      }
+      console.log(isPalindrome("kayak"));
+      console.log(isPalindrome("SOS"));
+      console.log(isPalindrome("Kayak"));
+      console.log(isPalindrome("Bonjour"));
+    </script>
+   
+  </head>
+  <body></body>
+</html>

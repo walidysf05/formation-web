@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing number</title>
+    <script>
+
+        let right = 5;
+        while(true){  
+            const number = Number(prompt('Enter a number between 0 and 10')); 
+            if (number > right) {
+                console.log('Try Less');
+            } else if (number < right) {
+                console.log('Try More');
+            } else {
+                break;
+            }
+        }
+        console.log('Well Done , you have the 6th sense');
+              
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
