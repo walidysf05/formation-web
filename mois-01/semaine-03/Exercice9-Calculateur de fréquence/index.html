@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequency Calculator</title>
+    <script>
+      const sentence = prompt("Enter a sentence to check") || "";
+      const words = sentence.toLowerCase().split(/[^\p{L}]+/u);
+
+      const counts = {};
+      for (const word of words) {
+        if (word.length >= 4) {
+          counts[word] = (counts[word] || 0) + 1;
+        }
+      }
+
+      const top3 = Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3);
+
+      console.log("Most repeated words is :", top3);
+    </script>
+  </head>
+  <body></body>
+</html>
