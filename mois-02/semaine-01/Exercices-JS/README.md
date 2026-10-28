@@ -1,17 +1,17 @@
 # Exercices JavaScript
 
-Six fonctions JavaScript écrites avec des tests `console.assert`, chacune dans deux versions pour comparer les méthodes.
+Huit fonctions JavaScript écrites avec des tests `console.assert`. Les exercices 1 à 5 existent dans deux versions pour comparer les méthodes.
 
 ## Méthode
 
 Pour chaque exercice :
 
-1. J'écris 3 tests avant de coder : un cas normal, un cas limite et un cas inattendu.
+1. J'écris des tests avant de coder : un cas normal, un cas limite et un cas inattendu.
 2. J'écris la fonction.
 3. Je vérifie avec `console.assert`.
 4. Je casse volontairement la solution pour vérifier que mes tests détectent l'erreur.
 
-Pour comparer deux tableaux ou deux objets, j'utilise `JSON.stringify(a) === JSON.stringify(b)`.
+Pour comparer deux tableaux ou deux objets, j'utilise `egal(a, b)`, qui compare `JSON.stringify(a)` et `JSON.stringify(b)`. L'opérateur `===` ne convient pas : il compare l'identité des objets et non leur contenu. Pour un nombre, un texte ou un booléen, `===` suffit.
 
 ## Lancer les tests
 
@@ -22,16 +22,18 @@ Ouvrir `index.html` dans le navigateur, puis ouvrir la console (F12).
 
 ## Résumé
 
-Chaque exercice a une fonction principale et une seconde version, toutes les deux écrites dans `exercices.js`. Les tests sont répartis entre les deux versions.
+Les exercices 1 à 5 ont une fonction principale et une seconde version, écrites toutes les deux dans `exercices.js`. Les tests sont répartis entre les deux versions. Les exercices 6 à 8 n'ont qu'une seule version.
 
-| Exercice | Fonction         | Méthode principale           | Seconde version                 |
-| -------- | ---------------- | ---------------------------- | ------------------------------- |
-| 1        | `somme`          | `filter` + `reduce`          | `sum` : boucle `for...of`       |
-| 2        | `fusionner`      | `Set`                        | `merge` : boucle et `includes`  |
-| 3        | `presenter`      | déstructuration, `?.`et `??` | `toPresent` : instructions `if` |
-| 4        | `carresDesPairs` | `filter` + `map`             | `squaresPairs` : boucle         |
-| 5        | `totalPanier`    | `reduce`                     | `cartTotal` : boucle            |
-| 6        | `compterMots`    | `for...of` + `Object.hasOwn` | aucune                          |
+| Exercice | Fonction         | Méthode principale                  | Seconde version                 |
+| -------- | ---------------- | ----------------------------------- | ------------------------------- |
+| 1        | `somme`          | `filter` + `reduce`                 | `sum` : boucle `for...of`       |
+| 2        | `fusionner`      | `Set`                               | `merge` : boucle et `includes`  |
+| 3        | `presenter`      | déstructuration, `?.` et `??`       | `toPresent` : instructions `if` |
+| 4        | `carresDesPairs` | `filter` + `map`                    | `squaresPairs` : boucle         |
+| 5        | `totalPanier`    | `reduce`                            | `cartTotal` : boucle            |
+| 6        | `compterMots`    | `for...of` + `Object.hasOwn`        | aucune                          |
+| 7        | `estAnagramme`   | `split("").sort().join("")`         | aucune                          |
+| 8        | `fizzBuzz`       | `if` / `else if` + `push`           | aucune                          |
 
 ## Ex 1 : `somme(...nombres)`
 
@@ -75,4 +77,16 @@ compte[mot] = (compte[mot] ?? 0) + 1;
 
 > [!NOTE]
 > Pour un objet qui contient une propriété `constructor`, l'aperçu de DevTools affiche `{}` alors que l'objet est bien `{ constructor: 2 }`. Pour voir le contenu réel, utiliser `JSON.stringify(...)`.
+
+## Ex 7 : `estAnagramme(a, b)`
+
+- **Ce que fait la fonction :** elle renvoie `true` si les deux textes ont les mêmes lettres, en ignorant les majuscules et les espaces.
+- **Pourquoi cette méthode :** `conformer` met en minuscules, retire les espaces, puis trie les lettres avec `split("").sort().join("")`. Deux anagrammes donnent alors le même texte, et il suffit de les comparer avec `===`.
+- **Difficulté :** sans `toLowerCase()`, `"Chien"` et `"Niche"` échouent, car `"C"` et `"c"` sont deux lettres différentes. Le test `"abc"` contre `"abcc"` vérifie qu'une lettre en trop est bien refusée. `replaceAll(" ", "")` ne retire que les espaces simples.
+
+## Ex 8 : `fizzBuzz(n)`
+
+- **Ce que fait la fonction :** elle renvoie un tableau de `1` à `n`, avec `"Fizz"` pour les multiples de 3, `"Buzz"` pour les multiples de 5 et `"FizzBuzz"` pour les deux.
+- **Pourquoi cette méthode :** une boucle `for` avec `if` / `else if` et `push` suit l'énoncé ligne par ligne.
+- **Difficulté :** le cas « les deux » doit venir en premier, sinon 15 donne `"Fizz"`.
 
