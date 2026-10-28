@@ -1,30 +1,78 @@
+# Exercices JavaScript
 
-- Pour chaque exercice, j'ai écrit 3 tests avant de coder (cas normal, cas limite, cas inattendu), puis la fonction, puis j'ai vérifié avec console.assert. J'ai ensuite cassé volontairement chaque solution pour vérifier que mes tests détectent bien l'erreur.
+Six fonctions JavaScript écrites avec des tests `console.assert`, chacune dans deux versions pour comparer les méthodes.
 
-- Dans exercices.js, la méthode principale est active et une seconde méthode est gardée en commentaire pour comparer.
+## Méthode
 
-Pour lancer les tests : ouvrez index.html, puis la console. Aucun message d'erreur donc tous les tests passent.
+Pour chaque exercice :
 
-- Ex 1 : somme(...nombres)
+1. J'écris 3 tests avant de coder : un cas normal, un cas limite et un cas inattendu.
+2. J'écris la fonction.
+3. Je vérifie avec `console.assert`.
+4. Je casse volontairement la solution pour vérifier que mes tests détectent l'erreur.
 
-Renvoie la somme de tous les nombres reçus, et 0 si on n'en donne aucun. J'ai choisi filter + reduce (la boucle for est en commentaire) : filter ignore ce qui n'est pas un nombre et reduce additionne. Difficulté : sans la valeur de départ 0, somme() renvoie undefined et somme(-1, 1) donne NaN, et un texte dans les arguments donnait "1a2" au lieu de 3.
+Pour comparer deux tableaux ou deux objets, j'utilise `JSON.stringify(a) === JSON.stringify(b)`.
 
-- Ex 2 : fusionner(a, b)
+## Lancer les tests
 
-Fusionne deux tableaux sans doublons. J'ai choisi [...new Set([...a, ...b])] (la version avec for et includes est en commentaire) parce qu'un Set garde chaque valeur une seule fois, dans l'ordre d'arrivée. Difficulté : [1, 2] === [1, 2] est toujours false en JavaScript, donc j'ai dû comparer mes résultats avec JSON.stringify.
+Ouvrir `index.html` dans le navigateur, puis ouvrir la console (F12).
 
-- Ex 3 : presenter(personne)
+> [!NOTE]
+> `console.assert` n'affiche rien quand le test passe. Aucun message d'erreur signifie donc que tous les tests passent.
 
-Renvoie une phrase de présentation, avec « âge inconnu » ou « ville inconnue » si une information manque. J'ai choisi la déstructuration avec age != null et adresse?.ville ?? "ville inconnue" (la version avec des if est en commentaire), car elles ne confondent pas 0 avec une valeur absente. Difficulté : avec if (age), un âge de 0 était pris pour un âge absent, et adresse.ville plantait avec une TypeError quand adresse n'existait pas.
+## Résumé
 
-- Ex 4 : carresDesPairs(nombres)
+Chaque exercice a une fonction principale et une seconde version, toutes les deux écrites dans `exercices.js`. Les tests sont répartis entre les deux versions.
 
-Renvoie les carrés des nombres pairs d'un tableau. J'ai choisi filter puis map (la boucle for est en commentaire) : on garde d'abord les entiers pairs, puis on élève au carré, ce qui se lit comme l'énoncé. Difficulté : le texte "4" passait pour un nombre pair ("4" % 2 vaut 0), il a fallu ajouter Number.isInteger.
+| Exercice | Fonction         | Méthode principale           | Seconde version                 |
+| -------- | ---------------- | ---------------------------- | ------------------------------- |
+| 1        | `somme`          | `filter` + `reduce`          | `sum` : boucle `for...of`       |
+| 2        | `fusionner`      | `Set`                        | `merge` : boucle et `includes`  |
+| 3        | `presenter`      | déstructuration, `?.`et `??` | `toPresent` : instructions `if` |
+| 4        | `carresDesPairs` | `filter` + `map`             | `squaresPairs` : boucle         |
+| 5        | `totalPanier`    | `reduce`                     | `cartTotal` : boucle            |
+| 6        | `compterMots`    | `for...of` + `Object.hasOwn` | aucune                          |
 
-- Ex 5 : totalPanier(articles)
+## Ex 1 : `somme(...nombres)`
 
-Calcule le total d'un panier d'objets { nom, prix, quantite }, et 0 pour un panier vide. J'ai choisi reduce avec 0 comme valeur de départ (la boucle for est en commentaire), car c'est le même principe que somme. Difficulté : remplacer * par + donnait le bon résultat sur le cas normal par hasard, seul le test avec une quantité de 0 détectait l'erreur.
+- **Ce que fait la fonction :** elle renvoie la somme de tous les nombres reçus, et `0` si on n'en donne aucun.
+- **Pourquoi cette méthode :** `filter` ignore ce qui n'est pas un nombre et `reduce` additionne, avec `0` comme valeur de départ.
+- **Difficulté :** sans le `0` de départ, `somme()` renvoie `undefined` et `somme(-1, 1)` donne `NaN`. Sans le filtre, `somme(1, "a", 2)` donnait `"1a2"` au lieu de `3`.
 
-- Ex 6 : compterMots(mots)
+## Ex 2 : `fusionner(a, b)`
 
-Renvoie le nombre d'occurrences de chaque mot sous forme d'objet. J'ai choisi une boucle for...of avec Object.hasOwn, qui est la version la plus facile à suivre . Difficulté : un mot comme "constructor" existe déjà dans un objet vide à cause de l'héritage.on cas de compte[mot] ?? 0 on attrape une "assertion failed" du mot réservé . 
+- **Ce que fait la fonction :** elle fusionne deux tableaux sans doublons.
+- **Pourquoi cette méthode :** `[...new Set([...a, ...b])]` est la plus courte, car un `Set` garde chaque valeur une seule fois, dans l'ordre d'arrivée.
+- **Difficulté :** `[1, 2] === [1, 2]` est toujours `false`, donc j'ai dû comparer mes résultats avec `JSON.stringify`.
+
+## Ex 3 : `presenter(personne)`
+
+- **Ce que fait la fonction :** elle renvoie une phrase de présentation, avec « âge inconnu » ou « ville inconnue » si une information manque.
+- **Pourquoi cette méthode :** `age != null` et `adresse?.ville ?? "ville inconnue"` ne confondent pas `0` avec une valeur absente.
+- **Difficulté :** avec `if (age)`, un âge de `0` était pris pour un âge absent, et `adresse.ville` plantait avec une `TypeError` quand `adresse` n'existait pas.
+
+## Ex 4 : `carresDesPairs(nombres)`
+
+- **Ce que fait la fonction :** elle renvoie les carrés des nombres pairs d'un tableau.
+- **Pourquoi cette méthode :** `filter` puis `map` se lit comme l'énoncé : on garde les entiers pairs, puis on élève au carré.
+- **Difficulté :** le texte `"4"` passait pour un nombre pair (`"4" % 2` vaut `0`), il a fallu ajouter `Number.isInteger`.
+
+## Ex 5 : `totalPanier(articles)`
+
+- **Ce que fait la fonction :** elle calcule le total d'un panier d'objets `{ nom, prix, quantite }`, et `0` pour un panier vide.
+- **Pourquoi cette méthode :** `reduce` avec `0` comme valeur de départ suit le même principe que `somme`.
+- **Difficulté :** remplacer `*` par `+` donnait le bon résultat sur le cas normal par hasard. Seul le test avec une quantité de `0` détectait l'erreur.
+
+## Ex 6 : `compterMots(mots)`
+
+- **Ce que fait la fonction :** elle renvoie le nombre d'occurrences de chaque mot sous forme d'objet.
+- **Pourquoi cette méthode :** la boucle `for...of` avec `Object.hasOwn` est la version la plus facile à suivre pas à pas.
+- **Difficulté :** un mot comme `"constructor"` existe déjà dans un objet vide à cause de l'héritage. Avec la ligne suivante, le test « mot réservé » affiche `Assertion failed` :
+
+```js
+compte[mot] = (compte[mot] ?? 0) + 1;
+```
+
+> [!NOTE]
+> Pour un objet qui contient une propriété `constructor`, l'aperçu de DevTools affiche `{}` alors que l'objet est bien `{ constructor: 2 }`. Pour voir le contenu réel, utiliser `JSON.stringify(...)`.
+
