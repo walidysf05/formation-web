@@ -195,3 +195,63 @@ console.assert(
   "compterMots : mot réservé",
 );
 
+// Ex 7 : estAnagramme(a, b) split("").sort().join("")
+
+function conformer(texte) {
+  return texte.toLowerCase().replaceAll(" ", "").split("").sort().join("");
+}
+
+function estAnagramme(a, b) {
+  return conformer(a) === conformer(b);
+}
+
+console.assert(
+  estAnagramme("Chien", "Niche") === true,
+  "estAnagramme : cas normal",
+);
+console.assert(
+  estAnagramme("", "") === true,
+  "estAnagramme : deux textes vides",
+);
+console.assert(
+  estAnagramme("Chien", " n i C h e") === true,
+  "estAnagramme : majuscules et espaces",
+);
+console.assert(
+  estAnagramme("abc", "abcc") === false,
+  "estAnagramme : longueurs différentes",
+);
+console.assert(
+  estAnagramme("chat", "chien") === false,
+  "estAnagramme : lettres différentes",
+);
+
+// Ex 8 : fizzBuzz(n) if .. else .push()
+
+function fizzBuzz(n) {
+  const resultat = [];
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      resultat.push("FizzBuzz");
+    } else if (i % 3 === 0) {
+      resultat.push("Fizz");
+    } else if (i % 5 === 0) {
+      resultat.push("Buzz");
+    } else {
+      resultat.push(i);
+    }
+  }
+  return resultat;
+}
+
+console.assert(
+  egal(fizzBuzz(5), [1, 2, "Fizz", 4, "Buzz"]),
+  "fizzBuzz : cas normal",
+);
+console.assert(egal(fizzBuzz(0), []), "fizzBuzz : n vaut 0");
+console.assert(egal(fizzBuzz(1), [1]), "fizzBuzz : n vaut 1");
+console.assert(egal(fizzBuzz(-3), []), "fizzBuzz : n négatif");
+console.assert(
+  fizzBuzz(15).at(-1) === "FizzBuzz",
+  "fizzBuzz : 15 donne FizzBuzz",
+);
