@@ -3,15 +3,15 @@
 const egal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 // Ex 1 : somme(...nombres) reduce
-//      : somme(...nombres) for loop
+//      : sum(...nombres) for loop
 
 function somme(...nombres) {
   return nombres
     .filter((n) => Number.isFinite(n))
     .reduce((total, n) => total + n, 0);
 }
-/* 
-function somme(...nombres) {
+
+function sum(...nombres) {
   let total = 0;
   for (const n of nombres) {
     if (Number.isFinite(n)) {
@@ -20,21 +20,21 @@ function somme(...nombres) {
   }
   return total;
 }
-*/
+
 console.assert(somme(1, 2, 3) === 6, "somme : cas normal");
-console.assert(somme() === 0, "somme : aucun argument");
+console.assert(sum() === 0, "somme : aucun argument");
 console.assert(somme(1, "a", 2) === 3, "somme : valeur non numérique ignorée");
-console.assert(somme(-1, 1) === 0, "somme : nombres négatifs");
+console.assert(sum(-1, 1) === 0, "somme : nombres négatifs");
 console.assert(somme(0.5, 0.25) === 0.75, "somme : décimaux");
 
 // Ex 2 : fusionner(a, b) new Set
-//      : fusionner(a, b) for loop , includes
+//      : merge(a, b) for loop , includes
 
 function fusionner(a, b) {
   return [...new Set([...a, ...b])];
 }
-/*
-function fusionner(a, b) {
+
+function merge(a, b) {
   const resultat = [];
   for (const x of [...a, ...b]) {
     if (!resultat.includes(x)) {
@@ -43,23 +43,23 @@ function fusionner(a, b) {
   }
   return resultat;
 }
-*/
+
 console.assert(
   egal(fusionner([1, 2], [2, 3]), [1, 2, 3]),
   "fusionner : cas normal",
 );
-console.assert(egal(fusionner([], []), []), "fusionner : deux tableaux vides");
+console.assert(egal(merge([], []), []), "fusionner : deux tableaux vides");
 console.assert(
   egal(fusionner([1, 1], [2, 2]), [1, 2]),
   "fusionner : doublons dans un même tableau",
 );
 console.assert(
-  egal(fusionner([], [1, 2]), [1, 2]),
+  egal(merge([], [1, 2]), [1, 2]),
   "fusionner : un tableau vide",
 );
 
 // Ex 3 : presenter(personne) déstructuration
-//      : presenter(personne) if statement
+//      : toPresent(personne) if statement
 
 function presenter(personne) {
   const { prenom, nom, age, adresse } = personne;
@@ -67,8 +67,8 @@ function presenter(personne) {
   const ville = adresse?.ville ?? "ville inconnue";
   return `${prenom} ${nom}, ${texteAge}, habite à ${ville}`;
 }
-/* 
-function presenter(personne) {
+
+function toPresent(personne) {
   let texteAge = "âge inconnu";
   if (personne.age !== undefined && personne.age !== null) {
     texteAge = `${personne.age} ans`;
@@ -81,7 +81,7 @@ function presenter(personne) {
 
   return `${personne.prenom} ${personne.nom}, ${texteAge}, habite à ${ville}`;
 }
-*/
+
 console.assert(
   presenter({
     prenom: "Marie",
@@ -92,7 +92,7 @@ console.assert(
   "presenter : cas normal",
 );
 console.assert(
-  presenter({
+  toPresent({
     prenom: "Marc",
     nom: "Martin",
     age: 0,
@@ -106,21 +106,21 @@ console.assert(
   "presenter : âge et adresse absents",
 );
 console.assert(
-  presenter({ prenom: "Marie", nom: "Dupont", age: 30, adresse: {} }) ===
+  toPresent({ prenom: "Marie", nom: "Dupont", age: 30, adresse: {} }) ===
     "Marie Dupont, 30 ans, habite à ville inconnue",
   "presenter : adresse sans ville",
 );
 
 // Ex 4 : carresDesPairs(nombres) map
-//      : carresDesPairs(nombres) for loop
+//      : squaresPairs(nombres) for loop
 
 function carresDesPairs(nombres) {
   return nombres
     .filter((n) => Number.isInteger(n) && n % 2 === 0)
     .map((n) => n * n);
 }
-/*
-function carresDesPairs(nombres) {
+
+function squaresPairs(nombres) {
   const resultat = [];
   for (const n of nombres) {
     if (Number.isInteger(n) && n % 2 === 0) {
@@ -129,19 +129,19 @@ function carresDesPairs(nombres) {
   }
   return resultat;
 }
-*/
+
 console.assert(
   egal(carresDesPairs([1, 2, 3, 4]), [4, 16]),
   "carresDesPairs : cas normal",
 );
 console.assert(egal(carresDesPairs([]), []), "carresDesPairs : liste vide");
 console.assert(
-  egal(carresDesPairs([-2, 0, "4"]), [4, 0]),
+  egal(squaresPairs([-2, 0, "4"]), [4, 0]),
   "carresDesPairs : négatif, zéro et texte",
 );
 
 // Ex 5 : totalPanier(articles) reduce
-//      : totalPanier(articles) for loop
+//      : cartTotal(articles) for loop
 
 function totalPanier(articles) {
   return articles.reduce(
@@ -149,15 +149,15 @@ function totalPanier(articles) {
     0,
   );
 }
-/*
-function totalPanier(articles) {
+
+function cartTotal(articles) {
   let total = 0;
   for (const article of articles) {
     total += article.prix * article.quantite;
   }
   return total;
 }
-*/
+
 console.assert(
   totalPanier([
     { nom: "cable", prix: 2, quantite: 3 },
@@ -167,7 +167,7 @@ console.assert(
 );
 console.assert(totalPanier([]) === 0, "totalPanier : panier vide");
 console.assert(
-  totalPanier([
+  cartTotal([
     { nom: "a", prix: 10, quantite: 0 },
     { nom: "b", prix: 2.5, quantite: 2 },
   ]) === 5,
@@ -194,3 +194,4 @@ console.assert(
   egal(compterMots(["constructor", "constructor"]), { constructor: 2 }),
   "compterMots : mot réservé",
 );
+
