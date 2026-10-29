@@ -53,10 +53,7 @@ console.assert(
   egal(fusionner([1, 1], [2, 2]), [1, 2]),
   "fusionner : doublons dans un même tableau",
 );
-console.assert(
-  egal(merge([], [1, 2]), [1, 2]),
-  "fusionner : un tableau vide",
-);
+console.assert(egal(merge([], [1, 2]), [1, 2]), "fusionner : un tableau vide");
 
 // Ex 3 : presenter(personne) déstructuration
 //      : toPresent(personne) if statement
@@ -176,7 +173,6 @@ console.assert(
 
 // Ex 6 : compterMots(mots) Object.hasOwn
 
-
 function compterMots(mots) {
   const compte = {};
   for (const mot of mots) {
@@ -254,4 +250,90 @@ console.assert(egal(fizzBuzz(-3), []), "fizzBuzz : n négatif");
 console.assert(
   fizzBuzz(15).at(-1) === "FizzBuzz",
   "fizzBuzz : 15 donne FizzBuzz",
+);
+
+// Ex 9 :  minMax(nombres) for .. if
+
+function minMax(nombres) {
+  if (nombres.length === 0) {
+    throw new Error("Le tableau est vide");
+  }
+  let min = nombres[0];
+  let max = nombres[0];
+  for (const n of nombres) {
+    if (n < min) min = n;
+    if (n > max) max = n;
+  }
+  return { min, max };
+}
+
+console.assert(
+  egal(minMax([3, 1, 2]), { min: 1, max: 3 }),
+  "minMax : cas normal",
+);
+console.assert(
+  egal(minMax([5]), { min: 5, max: 5 }),
+  "minMax : un seul nombre",
+);
+console.assert(
+  egal(minMax([-5, -1, -3]), { min: -5, max: -1 }),
+  "minMax : nombres négatifs",
+);
+
+let erreur;
+try {
+  minMax([]);
+} catch (e) {
+  erreur = e;
+}
+console.assert(
+  erreur instanceof Error,
+  "minMax : tableau vide lance une erreur",
+);
+console.assert(
+  erreur?.message === "Le tableau est vide",
+  "minMax : message de l'erreur",
+);
+
+// Ex 10 : trierParAge(personnes) .sort()
+
+function trierParAge(personnes) {
+  return [...personnes].sort((a, b) => a.age - b.age);
+}
+
+const ana = { nom: "Ana", age: 30 };
+const bob = { nom: "Bob", age: 20 };
+const cleo = { nom: "Cléo", age: 25 };
+
+console.assert(
+  egal(trierParAge([ana, bob, cleo]), [bob, cleo, ana]),
+  "trierParAge : cas normal",
+);
+console.assert(egal(trierParAge([]), []), "trierParAge : liste vide");
+console.assert(
+  egal(trierParAge([ana]), [ana]),
+  "trierParAge : une seule personne",
+);
+console.assert(
+  egal(
+    trierParAge([
+      { nom: "Zoe", age: 20 },
+      { nom: "Léo", age: 0 },
+      { nom: "Max", age: 20 },
+    ]),
+    [
+      { nom: "Léo", age: 0 },
+      { nom: "Zoe", age: 20 },
+      { nom: "Max", age: 20 },
+    ],
+  ),
+  "trierParAge : âge 0 et âges égaux",
+);
+
+const original = [ana, bob, cleo];
+
+trierParAge(original);
+console.assert(
+  egal(original, [ana, bob, cleo]),
+  "trierParAge : la liste d'origine n'a pas changé",
 );
