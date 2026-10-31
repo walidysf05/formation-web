@@ -1,6 +1,6 @@
 # Exercices JavaScript
 
-Huit fonctions JavaScript écrites avec des tests `console.assert`. Les exercices 1 à 5 existent dans deux versions pour comparer les méthodes.
+Dix fonctions JavaScript écrites avec des tests `console.assert`. Les exercices 1 à 5 existent dans deux versions pour comparer les méthodes.
 
 ## Méthode
 
@@ -22,7 +22,7 @@ Ouvrir `index.html` dans le navigateur, puis ouvrir la console (F12).
 
 ## Résumé
 
-Les exercices 1 à 5 ont une fonction principale et une seconde version, écrites toutes les deux dans `exercices.js`. Les tests sont répartis entre les deux versions. Les exercices 6 à 8 n'ont qu'une seule version.
+Les exercices 1 à 5 ont une fonction principale et une seconde version, écrites toutes les deux dans `exercices.js`. Les tests sont répartis entre les deux versions. Les exercices 6 à 10 n'ont qu'une seule version.
 
 | Exercice | Fonction         | Méthode principale                  | Seconde version                 |
 | -------- | ---------------- | ----------------------------------- | ------------------------------- |
@@ -34,6 +34,8 @@ Les exercices 1 à 5 ont une fonction principale et une seconde version, écrite
 | 6        | `compterMots`    | `for...of` + `Object.hasOwn`        | aucune                          |
 | 7        | `estAnagramme`   | `split("").sort().join("")`         | aucune                          |
 | 8        | `fizzBuzz`       | `if` / `else if` + `push`           | aucune                          |
+| 9        | `minMax`         | `for...of` + `if`, `throw`          | aucune                          |
+| 10       | `trierParAge`    | `[...personnes].sort(...)`          | aucune                          |
 
 ## Ex 1 : `somme(...nombres)`
 
@@ -89,4 +91,16 @@ compte[mot] = (compte[mot] ?? 0) + 1;
 - **Ce que fait la fonction :** elle renvoie un tableau de `1` à `n`, avec `"Fizz"` pour les multiples de 3, `"Buzz"` pour les multiples de 5 et `"FizzBuzz"` pour les deux.
 - **Pourquoi cette méthode :** une boucle `for` avec `if` / `else if` et `push` suit l'énoncé ligne par ligne.
 - **Difficulté :** le cas « les deux » doit venir en premier, sinon 15 donne `"Fizz"`.
+
+## Ex 9 : `minMax(nombres)`
+
+- **Ce que fait la fonction :** elle renvoie `{ min, max }`, le plus petit et le plus grand nombre du tableau, et lance une erreur avec `throw new Error(...)` si le tableau est vide.
+- **Pourquoi cette méthode :** la boucle `for...of` part du premier élément et met à jour `min` et `max` avec deux `if`, ce qui est plus facile à suivre pas à pas.
+- **Difficulté :** pour tester l'erreur, le `console.assert` doit se trouver **après** le `try` / `catch`. Dans le `catch`, il ne s'exécuterait jamais si la fonction ne lançait rien, et le test passerait en silence. Partir de `0` au lieu de `nombres[0]` donnait aussi un faux `min` ou un faux `max`.
+
+## Ex 10 : `trierParAge(personnes)`
+
+- **Ce que fait la fonction :** elle renvoie une nouvelle liste de personnes triée du plus jeune au plus âgé, sans modifier la liste d'origine.
+- **Pourquoi cette méthode :** `[...personnes].sort((a, b) => a.age - b.age)` copie d'abord la liste, puis trie la copie. `a.age - b.age` place le plus jeune en premier.
+- **Difficulté :** `sort()` modifie le tableau sur lequel on l'appelle. Avec `personnes.sort(...)`, le tri fonctionne et le cas normal passe, mais la liste d'origine est changée : seul le test « la liste d'origine n'a pas changé » détecte le bug.
 
