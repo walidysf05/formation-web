@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form id="search-form">
+      <input id="name" aria-label="Pokémon name" placeholder="e.g. pikachu" />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="result" role="status" aria-live="polite"></div>
+
+    <template id="tpl-card">
+      <article class="card">
+        <img alt="" />
+        <div class="no-img" hidden>No picture</div>
+        <h2></h2>
+        <p class="number"></p>
+        <ul class="types"></ul>
+        <p class="measures"></p>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+    <script src="tests.js"></script>
+  </body>
+</html>

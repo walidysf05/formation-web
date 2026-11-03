@@ -1,0 +1,84 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f2f4f8;
+  margin: 0;
+  padding: 2rem 1rem;
+  color: #1d2433;
+}
+form {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+input {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #b9c0d0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+button {
+  padding: 0.6rem 1rem;
+  border: 0;
+  border-radius: 6px;
+  background: #2b4acb;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #f2b705;
+  outline-offset: 2px;
+}
+#result {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  width: 240px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+.card img {
+  width: 160px;
+  height: 160px;
+  image-rendering: pixelated;
+}
+.card h2 {
+  margin: 0.25rem 0;
+  text-transform: capitalize;
+}
+.types {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+.types li {
+  background: #e3e8f7;
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  font-size: 0.9rem;
+}
+.no-img {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  background: #eceef3;
+  border-radius: 8px;
+  color: #6b7388;
+}
+.error {
+  color: #b3261e;
+}
+[hidden] {
+  display: none !important;
+}
