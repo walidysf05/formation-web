@@ -82,3 +82,32 @@ input:focus-visible {
 [hidden] {
   display: none !important;
 }
+
+/*  List + Previous  Next */
+#pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+#pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 1.5rem;
+  max-width: 800px;
+}
+.pokemon-link {
+  background: #fff;
+  color: #1d2433;
+  border: 1px solid #d5daea;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+.pokemon-link:hover {
+  background: #e3e8f7;
+}
