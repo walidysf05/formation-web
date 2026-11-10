@@ -150,6 +150,61 @@ document.getElementById("search-form").addEventListener("submit", async (e) => {
   showPokemon(name);
 });
 
+// Autocomplete suggestions
+// All Pokémon names are fetched once (about 1300) and kept in localStorage.
+// The promise is stored, so fast typing never triggers several identical requests.
+
+const suggestions = document.getElementById("suggestions");
+let namesPromise = null;
+
+function getAllNames() {
+  if (namesPromise) return namesPromise;
+
+  const cached = loadCache("pokedex-names");
+  if (Array.isArray(cached.names)) {
+    namesPromise = Promise.resolve(cached.names);
+    return namesPromise;
+  }
+
+  namesPromise = fetchJson(
+    `${API_URL}/pokemon?limit=2000`,
+    "Name list not found.",
+  )
+    .then((data) => {
+      const names = data.results.map((p) => p.name);
+      saveCache("pokedex-names", { names });
+      return names;
+    })
+    .catch((err) => {
+      namesPromise = null; // allow a retry on the next keystroke
+      throw err;
+    });
+  return namesPromise;
+}
+
+field.addEventListener("input", async () => {
+  const text = field.value.trim().toLowerCase().replace(/\s+/g, "-");
+
+  if (text.length < 2) {
+    suggestions.replaceChildren(); // too short: no suggestions
+    return;
+  }
+
+  try {
+    const names = await getAllNames();
+    const matches = names.filter((n) => n.startsWith(text)).slice(0, 5);
+    suggestions.replaceChildren(
+      ...matches.map((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        return option;
+      }),
+    );
+  } catch {
+    suggestions.replaceChildren(); // on error, just show nothing
+  }
+});
+
 // STEP 5 - list + Previous / Next
 
 const list = document.getElementById("pokemon-list");
