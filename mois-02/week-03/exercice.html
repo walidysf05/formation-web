@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Masquer les messages avec délégation d’événement</title>
+    <title>Hide messages using event delegation</title>
     <style>
       .pane {
         background: #eaf5dc;
@@ -48,8 +48,8 @@
         if (!button) return;
         button.closest(".pane").remove();
       });
-      // si le bouton contenait un élément enfant (par exemple un <span>),
-      // className ne fonctionnerait plus, car event.target pourrait être l’enfant.
+       // If the button contained a child element (for example, a <span>),
+      // className would no longer work, because event.target could be the child.
     </script>
   </body>
 </html>
