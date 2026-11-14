@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hide messages using event delegation</title>
+    <style>
+      .pane {
+        background: #eaf5dc;
+        border-top: 2px solid #c9e6a5;
+        padding: 10px 20px;
+        position: relative;
+      }
+      .remove-button {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        border: none;
+        background: none;
+        color: darkred;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="pane">
+        <h3>Horse</h3>
+        <p>The horse is one of two extant subspecies of Equus ferus...</p>
+        <button class="remove-button">[x]</button>
+      </div>
+      <div class="pane">
+        <h3>Donkey</h3>
+        <p>The donkey or ass (Equus africanus asinus)...</p>
+        <button class="remove-button">[x]</button>
+      </div>
+      <div class="pane">
+        <h3>Cat</h3>
+        <p>The domestic cat (Latin: Felis catus)...</p>
+        <button class="remove-button">[x]</button>
+      </div>
+    </div>
+    <script>
+      const container = document.getElementById("container");
+
+      container.addEventListener("click", (event) => {
+        const button = event.target.closest(".remove-button");
+        if (!button) return;
+        button.closest(".pane").remove();
+      });
+       // If the button contained a child element (for example, a <span>),
+      // className would no longer work, because event.target could be the child.
+    </script>
+  </body>
+</html>
+
+
