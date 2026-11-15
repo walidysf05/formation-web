@@ -1,6 +1,6 @@
 # Météo
 
-**Démo en ligne :** _(ajouter le lien ici)_
+**Démo en ligne :**[https://walidysf05.github.io/formation-web/mois-02/week-03/Open-Meteo/](https://walidysf05.github.io/formation-web/mois-02/week-03/Open-Meteo/)
 
 ## L'application
 
