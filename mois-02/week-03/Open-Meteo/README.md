@@ -1,7 +1,6 @@
 # Météo
 
 **Démo en ligne :**[https://walidysf05.github.io/formation-web/mois-02/week-03/Open-Meteo/](https://walidysf05.github.io/formation-web/mois-02/week-03/Open-Meteo/)
-**Démo en ligne :** [https://walidysf05.github.io/formation-web/mois-02/week-03/Open-Meteo/](https://walidysf05.github.io/formation-web/mois-02/week-03/Open-Meteo/)
 
 ## L'application
 
@@ -33,10 +32,14 @@ README.md
 Qui utilise qui :
 
 ```
-app.js => api.js => cache.js => weather.js
-  │          |=> weather.js
-  |=> ui.js => weather.js
-  |=> weather.js
+app.js
++-- api.js
+|   +-- cache.js
+|   |   +-- weather.js
+|   +-- weather.js
++-- ui.js
+|   +-- weather.js
++-- weather.js
 ```
 
 `api.js` n'importe jamais `ui.js`, et `ui.js` ne contient aucun `fetch`.
