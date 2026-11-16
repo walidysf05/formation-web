@@ -140,8 +140,6 @@ check(
 );
 check(!hasValidTimestamp({ savedAt: NOW + 1 }, NOW), "timestamp: future");
 
-
-
 document.getElementById("result").textContent =
   failures === 0
     ? "All tests pass ✅"
