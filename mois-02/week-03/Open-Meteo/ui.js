@@ -20,13 +20,19 @@ function makeElement(tag, text, className) {
  * @param {{name: string}} place
  * @param {{temperature: number|null, unit: string, time: string|null}} weather
  *   Object produced by `formatWeather`.
+ * @param {{notice?: string}} [options] `notice`: small warning under the card
+ *   (e.g. the data is old because the refresh failed). Shown as plain text.
  */
-export function displayWeather(place, weather) {
+export function displayWeather(place, weather, { notice } = {}) {
   const card = document.getElementById("tpl-weather").content.cloneNode(true);
 
   card.querySelector("h2").textContent = place.name;
   card.querySelector(".temperature").textContent = formatTemperature(weather);
   card.querySelector(".time").textContent = formatTime(weather.time);
+
+  const noticeElement = card.querySelector(".notice");
+  noticeElement.textContent = notice ?? ""; // textContent , never innerHTML
+  noticeElement.hidden = !notice;
 
   dom.result.replaceChildren(card);
 }
