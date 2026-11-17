@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Current weather</h1>
+
+    <button id="refresh" type="button">Refresh</button>
+
+    <div id="result" role="status" aria-live="polite"></div>
+
+    <template id="tpl-weather">
+      <article class="card">
+        <h2></h2>
+        <p class="temperature"></p>
+        <p class="time"></p>
+        <p class="notice" hidden></p>
+      </article>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
