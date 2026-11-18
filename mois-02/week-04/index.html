@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Météo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Météo</h1>
+
+    <form id="search-form">
+      <label for="city-input">Ville</label>
+      <div class="search-row">
+        <input
+          id="city-input"
+          type="search"
+          maxlength="100"
+          autocomplete="off"
+          placeholder="Lille, Saint-Étienne..."
+        />
+        <button id="search-button" type="submit">Rechercher</button>
+      </div>
+    </form>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <ul id="results"></ul>
+
+    <p id="selection" aria-live="polite"></p>
+
+    <template id="tpl-city">
+      <li>
+        <button type="button" class="city" aria-pressed="false">
+          <span class="city-name"></span>
+          <span class="city-place"></span>
+        </button>
+      </li>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
