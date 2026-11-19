@@ -45,7 +45,7 @@ async function fetchJson(url, badRequestMessage) {
     );
   }
   try {
-    // "reurn await" (not "return"): otherwise the catch below never runs.
+    // "return await" (not "return"): otherwise the catch below never runs.
     return await response.json();
   } catch {
     // 200 with a non-JSON or truncated body (proxy page, connection cut )
@@ -58,18 +58,18 @@ async function fetchJson(url, badRequestMessage) {
  * @param {string} name Text typed by the user (already trimmed).
  * @returns {Promise<Array>} The cities, or [] when nothing was found.
  * @throws {Error} Readable message: network down, invalid search, server error
- *   or unexpected respoonse.
+ *   or unexpected response.
  */
-export async function seachCities(name) {
-  // encodeURIcomponent: "Saint-Étienne" => "Saint-%C3%89tienne"
+export async function searchCities(name) {
+  // encodeURIComponent: "Saint-Étienne" => "Saint-%C3%89tienne"
   const url = `${API_URL}?name=${encodeURIComponent(name)}&count=${MAX_RESULTS}&language=fr`;
   const data = await fetchJson(url, INVALID_SEARCH_MESSAGE);
 
-  // Not an object (null, text, array) or "results" that is not an array: braken answer.
+  // Not an object (null, text, array) or "results" that is not an array: broken answer.
   if (data === null || typeof data !== "object" || Array.isArray(data)) {
     throw new Error(INVALID_RESPONSE_MESSAGE);
   }
-  // Unkown city: the API answers 200 WITHOUT "results": [] is not an error.
+  // Unknown city: the API answers 200 WITHOUT "results": [] is not an error.
   if (data.results === undefined) return [];
   if (!Array.isArray(data.results)) throw new Error(INVALID_RESPONSE_MESSAGE);
   return data.results;

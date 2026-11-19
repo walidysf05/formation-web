@@ -1,4 +1,4 @@
-// Entry point: connects api.js and ui.js and sets the listners.
+// Entry point: connects api.js and ui.js and sets the listeners.
 
 import { searchCities } from "./api.js";
 import {

@@ -1,4 +1,4 @@
-// Everyting the touche the page. No fetch;
+// Everything that touches the page. No fetch;
 
 /** Elements of the page, defined once. */
 export const dom = {
@@ -12,7 +12,7 @@ export const dom = {
 
 // Region and country may be missing: keep only ones that exist.
 function formatPlace(city) {
-  return [city.admin1, city.contry].filter(Boolean).join(", ");
+  return [city.admin1, city.country].filter(Boolean).join(", ");
 }
 
 /**
@@ -31,11 +31,11 @@ export function clearMessage() {
   dom.message.replaceChildren();
 }
 
-export function displayLoadig() {
+export function displayLoading() {
   displayMessage("Loading...");
 }
 
-/** Enables or disables the Search button (penvents duplicate requests). */
+/** Enables or disables the Search button (prevents duplicate requests). */
 export function setSearchDisabled(disabled) {
   dom.searchButton.disabled = disabled;
 }
