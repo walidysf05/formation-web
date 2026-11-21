@@ -88,9 +88,16 @@ export function markSelected(index) {
   }
 }
 
+// On a phone the weather area is below the list: bring it into view.
+// "nearest" = scroll only as much as needed (nothing if already visible).
+function showWeatherArea() {
+  getDom().weather.scrollIntoView({ block: "nearest" });
+}
+
 /** Displays a message (loading, error) in the weather area. */
 export function displayWeatherMessage(text, isError = false) {
   getDom().weather.replaceChildren(makeParagraph(text, isError));
+  showWeatherArea();
 }
 
 export function displayWeatherLoading() {
@@ -133,4 +140,5 @@ export function displayWeather(city, weather) {
   card.querySelector(".forecast").replaceChildren(...days);
 
   getDom().weather.replaceChildren(card);
+  showWeatherArea();
 }
