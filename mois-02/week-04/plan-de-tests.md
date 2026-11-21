@@ -3,8 +3,6 @@
 Appli : recherche d'une ville → choix d'un résultat → météo actuelle + 5 prochains jours.
 APIs : Open-Meteo Geocoding (`/v1/search`) et Open-Meteo Forecast (`/v1/forecast`).
 
-> Tests faits le 20/11/2026 dans Chrome (Live Server, 127.0.0.1:5500), onglets Réseau et Console ouverts. Les erreurs de la console venant d'une extension du navigateur (Kaspersky, `main.js`) ne sont pas celles de l'appli.
-
 ## 1. Notes d'exploration de l'API
 
 | Appel | Ce que renvoie l'API |
@@ -71,7 +69,7 @@ Types : **N** = normal, **L** = limite, **E** = erreur.
 | 35 (L) Envoi invalide après un résultat | Afficher la météo de Lille, puis vider le champ (ou saisir « a ») et envoyer | Le message d'erreur s'affiche, mais la liste des villes, la sélection et la carte météo restent visibles. | Champ vide puis « a » : « Enter a city name. » / « Enter at least 2 letters. ». Liste, ligne Lille surlignée et carte météo conservées, 0 requête. | OK |
 | 36 (L) Erreurs annoncées | Lecteur d'écran (ou inspecteur d'accessibilité) sur une erreur | Les erreurs (rouge) ont `role="alert"` ; « Loading... » reste un simple statut. | Erreur : `<p class="error" role="alert">` dans `<div id="message" role="status" aria-live="polite">`. Message gris : `<p>` sans `role="alert"`. | OK |
 
-## 3. Récapitulatif (à remplir à la fin)
+## 3. Récapitulatif 
 
 - Cas passés OK : 36 / 36
 - Cas KO à corriger : aucun
