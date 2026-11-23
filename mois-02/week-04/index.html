@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Weather</h1>
+
+    <form id="search-form" >
+      <label for="city-input">City</label>
+      <div class="search-row">
+        <input
+          id="city-input"
+          type="search"
+          maxlength="100"
+          autocomplete="off"
+          placeholder="Lille, Saint-Étienne…"
+        />
+        <button id="search-button" type="submit">Search</button>
+      </div>
+    </form>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <ul id="results"></ul>
+
+    <div id="weather" role="status" aria-live="polite"></div>
+
+    <template id="tpl-city">
+      <li>
+        <button type="button" class="city" aria-pressed="false">
+          <span class="city-name"></span>
+          <span class="city-place"></span>
+        </button>
+      </li>
+    </template>
+
+    <template id="tpl-weather">
+      <article class="card">
+        <h2></h2>
+        <p class="temperature"></p>
+        <p class="description"></p>
+        <p class="wind"></p>
+        <h3>5-day forecast</h3>
+        <ul class="forecast"></ul>
+      </article>
+    </template>
+
+    <template id="tpl-day">
+      <li>
+        <span class="day"></span>
+        <span class="day-description"></span>
+        <span class="range"></span>
+      </li>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
