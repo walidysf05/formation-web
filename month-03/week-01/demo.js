@@ -1,18 +1,22 @@
+// demo.js - fills the demo page
 
 import { Product } from "./product.js";
+import { Cart } from "./cart.js";
+import { formatEuro } from "./money.js";
 
-const products = [
-  new Product("Keyboard", 2990, 5),
-  new Product("Mouse", 1550, 12),
-  new Product("27-inch monitor", 189900, 0),
-];
+const keyboard = new Product("Keyboard", 2990, 5);
+const mouse = new Product("Mouse", 1550, 12);
 
-const list = document.querySelector("#product-list");
-for (const product of products) {
+const cart = new Cart();
+cart.add(keyboard, 3);
+cart.add(mouse, 2);
+
+const list = document.querySelector("#cart-lines");
+for (const { product, quantity } of cart.lines) {
   const li = document.createElement("li");
-  li.textContent = `${product} (stock: ${product.stock})`;
+  li.textContent = `${quantity} × ${product}`;
   list.append(li);
 }
 
-console.log(0.1 + 0.2, "floating point");
-console.log(String(products[0]));
+document.querySelector("#cart-total").textContent =
+  `${cart.itemCount} items => total: ${formatEuro(cart.total)}`;
