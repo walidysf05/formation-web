@@ -1,7 +1,8 @@
 // cart.js
 
-import { Product } from "./product.js";
 import { assertPositiveInteger } from "./validation.js";
+
+/** @typedef {import("./product.js").Product} Product */
 
 /**
  * One line of the cart.
@@ -33,14 +34,11 @@ export class Cart {
    *
    * @param {Product} product - The product to add.
    * @param {number} [quantity=1] - Quantity: integer > 0.
-   * @throws {Error} If `product` is not a `Product`, the quantity is invalid,
-   *   or the stock is too low (the cart is left unchanged).
+   * @throws {Error} If the quantity is invalid or the product is not available
+   *   (the cart is left unchanged).
    * @returns {void}
    */
   add(product, quantity = 1) {
-    if (!(product instanceof Product)) {
-      throw new Error("product must be a Product");
-    }
     assertPositiveInteger(quantity, "quantity");
 
     const line = this.#findLine(product);
@@ -85,7 +83,7 @@ export class Cart {
   get total() {
     return this.#lines.reduce(
       (sum, line) => sum + line.product.price * line.quantity,
-      0
+      0,
     );
   }
 

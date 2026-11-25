@@ -11,8 +11,8 @@ body {
 
 /* Le titre */
 h1 {
-  color:  #01352c;
-  border-bottom: 4px solid #588c73 ;
+  color: #01352c;
+  border-bottom: 4px solid #588c73;
   padding-bottom: 0.5rem;
 }
 
@@ -57,12 +57,12 @@ ul#results {
 }
 
 .pass {
-  background: #e1eacd;
-  color: #588c73;
+  background: #d4ecd6;
+  color: #1b5e3a;
 }
 
 .fail {
-  background: #e1eacd;
+  background: #f8d7d7;
   color: #a23131;
   font-weight: bold;
 }
