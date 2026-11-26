@@ -37,6 +37,24 @@ export class Product {
     this.#stock = stock;
   }
 
+  /**
+   * Creates a Product from a simple object. The checks are the ones of the
+   * constructor: if a value is invalid, an error is thrown.
+   * @example Product.fromObject({ name: "keyboard", price: 2990, stock: 5 })
+   *
+   * @param {{ name: string, price: number, stock?: number}} data
+   *  The `stock` is optional (0 if missing). Other properties are ignored.
+   * @throws {Error} If `data` is not an object, or a value is invalid.
+   * @returns {Product}
+   */
+  static fromObject(data) {
+    if (typeof data !== "object" || data === null) {
+      throw new Error("data must be an object like { name, price, stock }");
+    }
+    const { name, price, stock } = data;
+    return new Product(name, price, stock);
+  }
+
   /** @type {string} Product name (read-only). */
   get name() {
     return this.#name;

@@ -115,3 +115,62 @@ test("removeFromStock() rejects a quantity that is not a number", () => {
   assertThrows(() => product.removeFromStock(NaN));
   assertEqual(product.stock, 5);
 });
+
+// Product.fromObject
+ 
+test("fromObject() creates a Product from an object", () => {
+  const product = Product.fromObject({ name: "Keyboard", price: 2990, stock: 5 });
+  assertEqual(product instanceof Product, true);
+  assertEqual(product.name, "Keyboard");
+  assertEqual(product.price, 2990);
+  assertEqual(product.stock, 5);
+});
+
+test("fromObject() uses a stock of 0 when the stock is missing", () => {
+  assertEqual(Product.fromObject({ name: "Mouse", price: 1550 }).stock, 0);
+});
+
+test("fromObject() ignores the other properties", () => {
+  const product = Product.fromObject({ name: "Mouse", price: 1550, color: "red" });
+  assertEqual(product.color, undefined);
+  assertEqual(product.name, "Mouse");
+});
+
+test("fromObject() has the same checks as the constructor", () => {
+  assertThrows(() => Product.fromObject({ name: "", price: 100 }));
+  assertThrows(() => Product.fromObject({ name: "A", price: -1 }));
+  assertThrows(() => Product.fromObject({ name: "A", price: 29.9 }));
+  assertThrows(() => Product.fromObject({ name: "A", price: "2990" }));
+  assertThrows(() => Product.fromObject({ name: "A", price: 100, stock: -1 }));
+  assertThrows(() => Product.fromObject({ name: "A", price: 100, stock: null }));
+});
+
+test("fromObject() throws if a property is missing", () => {
+  assertThrows(() => Product.fromObject({}));
+  assertThrows(() => Product.fromObject({ name: "A" }));
+  assertThrows(() => Product.fromObject({ price: 100 }));
+});
+
+test("fromObject() throws if it does not receive an object", () => {
+  assertThrows(() => Product.fromObject());
+  assertThrows(() => Product.fromObject(null));
+  assertThrows(() => Product.fromObject("Keyboard"));
+  assertThrows(() => Product.fromObject(42));
+});
+
+test("fromObject() trims the name like the constructor", () => {
+  assertEqual(Product.fromObject({ name: "  Mouse  ", price: 100 }).name, "Mouse");
+});
+
+test("fromObject() is static: it belongs to the class, not to an instance", () => {
+  const product = new Product("A", 100);
+  assertEqual(product.fromObject, undefined);
+  assertEqual(typeof Product.fromObject, "function");
+});
+
+test("a Product made by fromObject works in a Cart-like use", () => {
+  const product = Product.fromObject({ name: "A", price: 100, stock: 3 });
+  assertEqual(product.isAvailable(3), true);
+  product.removeFromStock(2);
+  assertEqual(product.stock, 1);
+});

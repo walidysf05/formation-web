@@ -69,7 +69,7 @@ test("expirationDate returns a copy: changing it changes nothing", () => {
 });
 
 test("the original Date given to the constructor is copied", () => {
-  const date = new Date("2037-07-07");
+  const date = new Date("2077-07-07");
   const yogurt = new PerishableProduct("Y", 100, 1, date);
   date.setFullYear(2000);
   assertEqual(yogurt.isExpired(), false);

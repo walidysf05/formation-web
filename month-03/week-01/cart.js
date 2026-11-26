@@ -1,6 +1,7 @@
 // cart.js
 
 import { assertPositiveInteger } from "./validation.js";
+import { PromoCode } from "./promo.js";
 
 /** @typedef {import("./product.js").Product} Product */
 
@@ -18,6 +19,9 @@ import { assertPositiveInteger } from "./validation.js";
 export class Cart {
   /** @type {CartLine[]} */
   #lines = [];
+
+  /** @type {PromoCode | null} The promo code is use (only one at a time). */
+  #promoCode = null;
 
   /**
    * Finds the line of a product (compared by object reference).
@@ -67,11 +71,52 @@ export class Cart {
   }
 
   /**
-   * Empties the cart.
+   * Empties the cart: the lines AND the promo code.
    * @returns {void}
    */
   clear() {
     this.#lines = [];
+    this.#promoCode = null;
+  }
+
+  /**
+   * Buys everything in the cart: removes the quantities from the stocks,
+   * empties the cart and returns the amount paid.
+   * All or nothing: if one product is no longer available, an error is thrown
+   * and NOTHING changes (neither the cart, nor the promo code, nor the stocks).
+   *
+   * @throws {Error} If a product is no longer available in the wanted quantity.
+   * @returns {number} The amount paid in cents (after the promo code).
+   */
+  checkout() {
+    // 1. Check everything first: nothing is changed in this loop.
+    for (const { product, quantity } of this.#lines) {
+      if (!product.isAvailable(quantity)) {
+        throw new Error(`"${product.name}" is no longer available`);
+      }
+    }
+
+    // 2. Everything is fine: now we can change things.
+    const paid = this.totalToPay; // before clear(), which forgets the promo code
+    for (const { product, quantity } of this.#lines) {
+      product.removeFromStock(quantity);
+    }
+    this.clear();
+    return paid;
+  }
+
+  /**
+   * Uses a promo code. Only one code at a time: a new code replaces the old one.
+   *
+   * @param {PromoCode} promoCode - The promo code to use.
+   * @throws {Error} If `promoCode` is not a `PromoCode` (the old code is kept).
+   * @returns {void}
+   */
+  applyCode(promoCode) {
+    if (!(promoCode instanceof PromoCode)) {
+      throw new Error("promoCode must be a PromoCode");
+    }
+    this.#promoCode = promoCode;
   }
 
   /** @type {number} Total number of items (sum of the quantities). */
@@ -85,6 +130,14 @@ export class Cart {
       (sum, line) => sum + line.product.price * line.quantity,
       0,
     );
+  }
+
+  /**
+   * @type {number} Amount to pay in cents: the total after the promo code
+   *  (the same as `total` if there is no code).
+   */
+  get totalToPay() {
+    return this.#promoCode ? this.#promoCode.apply(this.total) : this.total;
   }
 
   /**

@@ -15,7 +15,7 @@ const cart = new Cart();
 cart.add(keyboard, 3);
 cart.add(mouse, 2);
 cart.add(yogurt, 4);
-cart.add(ebook); 
+cart.add(ebook);
 
 const list = document.querySelector("#cart-lines");
 for (const { product, quantity } of cart.lines) {
