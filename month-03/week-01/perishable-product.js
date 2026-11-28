@@ -46,6 +46,6 @@ export class PerishableProduct extends Product {
    * @returns {boolean}
    */
   isAvailable(quantity = 1) {
-    return !this.isExpired() && super.isAvailable(quantity);
+    return super.isAvailable(quantity) && !this.isExpired();
   }
 }

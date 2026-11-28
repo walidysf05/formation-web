@@ -74,3 +74,8 @@ test("the original Date given to the constructor is copied", () => {
   date.setFullYear(2000);
   assertEqual(yogurt.isExpired(), false);
 });
+
+test("isAvailable() rejects an invalid quantity, even when expired", () => {
+  assertThrows(() => new PerishableProduct("Y", 100, 5, future).isAvailable(0));
+  assertThrows(() => new PerishableProduct("Y", 100, 5, past).isAvailable(-1));
+});

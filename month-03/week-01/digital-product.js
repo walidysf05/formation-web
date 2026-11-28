@@ -34,8 +34,13 @@ export class DigitalProduct extends Product {
     return Infinity;
   }
 
-  /** @returns {boolean} Always `true`: there is always a copy left. */
-  isAvailable() {
+  /** Always `true`: there is always a copy left.
+   * @param {number} [quantity=1] - Wanted quantity: integer > 0.
+   * @throws {Error} If the quantity is not an integer > 0.
+   * @returns {boolean} 
+   */
+  isAvailable(quantity = 1) {
+    assertPositiveInteger(quantity, "quantity")
     return true;
   }
 

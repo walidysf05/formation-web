@@ -73,10 +73,12 @@ export class Product {
   /**
    * Tells whether the stock is enough for a given quantity.
    *
-   * @param {number} [quantity=1] - Wanted quantity.
+   * @param {number} [quantity=1] - Wanted quantity: integer > 0.
+   * @throws {Error} If the quantity is not an integer > 0.
    * @returns {boolean} `true` if `stock >= quantity`.
    */
   isAvailable(quantity = 1) {
+    assertPositiveInteger(quantity, "quantity");
     return this.#stock >= quantity;
   }
 

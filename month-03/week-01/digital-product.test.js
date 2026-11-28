@@ -44,3 +44,10 @@ test("removeFromStock() still rejects an invalid quantity", () => {
   assertThrows(() => book.removeFromStock(1.5));
   assertThrows(() => book.removeFromStock("2"));
 });
+
+test("isAvailable() still rejects an invalid quantity", () => {
+  const book = new DigitalProduct("E-book", 999, 4.5);
+  assertThrows(() => book.isAvailable(0));
+  assertThrows(() => book.isAvailable(-1));
+  assertThrows(() => book.isAvailable("2"));
+});

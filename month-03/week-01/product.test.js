@@ -117,7 +117,7 @@ test("removeFromStock() rejects a quantity that is not a number", () => {
 });
 
 // Product.fromObject
- 
+
 test("fromObject() creates a Product from an object", () => {
   const product = Product.fromObject({ name: "Keyboard", price: 2990, stock: 5 });
   assertEqual(product instanceof Product, true);
@@ -173,4 +173,13 @@ test("a Product made by fromObject works in a Cart-like use", () => {
   assertEqual(product.isAvailable(3), true);
   product.removeFromStock(2);
   assertEqual(product.stock, 1);
+});
+
+test("isAvailable() rejects a quantity that is not a whole number > 0", () => {
+  const product = new Product("A", 100, 5);
+  assertThrows(() => product.isAvailable(0));
+  assertThrows(() => product.isAvailable(-1));
+  assertThrows(() => product.isAvailable(1.5));
+  assertThrows(() => product.isAvailable("2"));
+  assertThrows(() => product.isAvailable(NaN));
 });

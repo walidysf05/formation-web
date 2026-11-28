@@ -1,11 +1,12 @@
 # Mini boutique : Product, Cart et héritage
 
+**Démo en ligne :** https://walidysf05.github.io/formation-web/month-03/week-01/demo.html
+
 Une petite boutique en JavaScript (sans framework) : des produits, un panier,
 des codes promo et un achat « tout ou rien ». Les prix sont stockés en
 **centimes** (entiers) pour éviter les erreurs des nombres décimaux
 (`0.1 + 0.2 !== 0.3`).
 
-**Démo en ligne :** https://walidysf05.github.io/formation-web/month-03/week-01/demo.html
 
 ## Lancer le projet
 
@@ -97,6 +98,45 @@ l'extension **Live Server** de VS Code.
 - **Validation à l'entrée** : une valeur invalide lance une erreur (`throw`).
 - **Un refus ne change rien** : on vérifie tout avant de modifier quoi que ce soit.
 - **Copies défensives** : `lines` et `expirationDate` renvoient des copies.
+
+## Trois choix de conception
+ 
+### Pourquoi des centimes ?
+ 
+Les nombres décimaux ne sont pas exacts en JavaScript : `0.1 + 0.2` ne donne pas `0.3`.
+Pour de l'argent, une petite erreur de ce genre est inacceptable. Je stocke donc tous les prix
+en **centimes**, avec des nombres entiers (`2990` pour 29,90 €), et je ne divise par 100
+qu'au moment de l'affichage, dans `formatEuro`. Pour les remises, je multiplie avant de
+diviser, puis j'arrondis au centime avec `Math.round`.
+ 
+### Pourquoi des champs privés ?
+ 
+Le prix et le stock sont privés (`#price`, `#stock`) et se lisent avec des getters, sans
+setter : écrire `product.price = -5` ou `product.stock = 99` lance une erreur. Le stock ne
+change que par `removeFromStock()`, qui vérifie la quantité avant de modifier. De la même
+façon, `cart.lines` renvoie une copie : on ne peut pas contourner les vérifications de
+`add()`. Toutes les règles sont ainsi au même endroit, et aucun objet ne peut devenir invalide.
+ 
+### Pourquoi pas de `instanceof` dans le panier ?
+ 
+`Cart` ne teste jamais le type d'un produit : il appelle seulement `product.isAvailable(...)`.
+Chaque classe sait quoi répondre : un `DigitalProduct` dit toujours oui, un
+`PerishableProduct` périmé dit non, un `Product` compare avec son stock. Grâce à cela (le
+polymorphisme), on peut ajouter un nouveau type de produit sans changer une ligne de `Cart`.
+Le panier vérifie seulement qu'un code promo est bien un `PromoCode`, ce qui n'est pas un produit.
+ 
+## Un bug que mes tests m'ont fait trouver
+ 
+`isAvailable()` acceptait n'importe quelle quantité : `isAvailable(-1)` renvoyait `true`, et
+`isAvailable("2")` marchait par conversion automatique. En écrivant un test pour les quantités
+invalides, j'ai vu qu'il ne lançait aucune erreur : le test a échoué avec
+« expected an error, but none was thrown ».
+ 
+J'ai corrigé en appelant `assertPositiveInteger` au début de `isAvailable()` dans `Product`, et
+aussi dans `DigitalProduct` qui la redéfinit. Dans `PerishableProduct`, j'ai mis
+`super.isAvailable(quantity)` **avant** le test de péremption : sinon un produit périmé aurait
+renvoyé `false` au lieu de lancer l'erreur. Trois tests échouaient avant la correction, et tous
+passent maintenant.
 
 ## Les tests
 
