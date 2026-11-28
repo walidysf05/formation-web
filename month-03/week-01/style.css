@@ -1,0 +1,68 @@
+/* La page */
+body {
+  font-family: system-ui, sans-serif;
+  background: #e1eacd;
+  color: #01352c;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  line-height: 1.5;
+}
+
+/* Le titre */
+h1 {
+  color: #01352c;
+  border-bottom: 4px solid #588c73;
+  padding-bottom: 0.5rem;
+}
+
+/* Les liens */
+a {
+  color: #01352c;
+  font-weight: bold;
+}
+
+/* Le panier */
+ul#cart-lines {
+  list-style: none;
+  padding: 0;
+  background: #bad8b6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0002;
+}
+
+#cart-lines li {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+#cart-total {
+  background: #bad8b6;
+  color: #01352c;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+/* Les résultats des tests */
+ul#results {
+  list-style: none;
+  padding: 0;
+}
+
+#results li {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.4rem;
+  border-radius: 8px;
+}
+
+.pass {
+  background: #d4ecd6;
+  color: #1b5e3a;
+}
+
+.fail {
+  background: #f8d7d7;
+  color: #a23131;
+  font-weight: bold;
+}
